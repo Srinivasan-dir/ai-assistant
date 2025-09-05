@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // **IMPORTANT: REPLACE THESE PLACEHOLDER URLS WITH YOUR ACTUAL PUBLISHED GOOGLE SITE URLS**
     const pageUrls = {
-        'fourwaytest': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
+        'beforeyoubegin': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
         'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
         'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
+        'issue': 'https://sites.google.com/view/praghna-learning-centre/identify-issue-and-literature-review',
         'quiz': 'https://sites.google.com/view/praghna-learning-centre/quiz-yourself'
     };
 
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to start the assistant immediately on page load
     function startAssistant() {
-        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin, Definitions and Terms, choose a subject, and some Quiz to test your knowledge. Please tell me which test you would like to take.";
+        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin, Definitions and Terms, choose a subject, Identify Issue and Literature Review and some Quiz to test your knowledge. Please tell me which test you would like to take.";
         addMessage(welcomeText, 'assistant-message');
         speak(welcomeText);
     }
@@ -71,12 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserCommand(command) {
         let testChosen = '';
 
-        if (command.includes('fourwaytest') || command.includes('Four')) {
-            testChosen = 'fourwaytest';
+        if (command.includes('beforeyoubegin') || command.includes('begin')) {
+            testChosen = 'beforeyoubegin';
         } else if (command.includes('definitions') || command.includes('terms')) {
             testChosen = 'definitions';
         } else if (command.includes('subject') || command.includes('topic')) {
             testChosen = 'subject';
+        } else if (command.includes('issue') || command.includes('issue')) {
+            testChosen = 'issue';
         } else if (command.includes('quiz') || command.includes('quiz')) {
             testChosen = 'quiz';
         }
@@ -96,5 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
