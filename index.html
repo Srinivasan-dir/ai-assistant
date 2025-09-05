@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Methodology AI Assistant</title>
+    <style>
+        /* Add some basic styling for the button and the assistant window */
+        body { font-family: sans-serif; text-align: center; margin: 50px; }
+        .assistant-container { border: 2px solid #ddd; padding: 20px; border-radius: 10px; display: none; margin-top: 20px; }
+        .message { margin-bottom: 10px; }
+        .assistant-message { color: #007BFF; }
+        .user-message { color: #28A745; }
+        #introButton { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <button id="introButton">Start Introduction</button>
+
+    <div id="assistant" class="assistant-container">
+        <p class="assistant-message" id="aiMessage">Welcome! Please click the button to begin.</p>
+        <button id="listenButton">Speak</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
