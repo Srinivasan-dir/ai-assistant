@@ -17,32 +17,14 @@
             margin: 0;
             padding: 20px;
         }
-        .intro-button-container {
-            text-align: center;
-        }
-        .intro-button {
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        .intro-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
+        
         .assistant-container {
             width: 90%;
             max-width: 500px;
             background-color: #ffffff;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            display: none; /* Initially hidden */
+            display: flex; /* Display the container directly */
             flex-direction: column;
             padding: 20px;
             box-sizing: border-box;
@@ -59,7 +41,7 @@
             overflow-y: auto;
             padding: 10px;
             border-radius: 8px;
-            background-color: #f9f9f9;
+            background-color: #f9f9f5;
             margin-bottom: 20px;
             display: flex;
             flex-direction: column;
@@ -115,17 +97,12 @@
 </head>
 <body>
 
-    <div class="intro-button-container">
-        <button id="introButton" class="intro-button">Start Voice Assistant</button>
-    </div>
-
     <div id="assistant-window" class="assistant-container">
         <header class="assistant-header">
             <h3>AI Research Assistant</h3>
         </header>
         <div id="message-display" class="message-display">
-            <p class="assistant-message">Welcome! Please click the 'Speak' button to begin.</p>
-        </div>
+            </div>
         <div class="input-area">
             <button id="listenButton">
                 Speak
@@ -135,6 +112,5 @@
     </div>
 
     <script src="script.js"></script>
-    
 </body>
 </html>
