@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // **IMPORTANT: REPLACE THESE PLACEHOLDER URLS WITH YOUR ACTUAL PUBLISHED GOOGLE SITE URLS**
     const pageUrls = {
-        '4OsTest': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
+        'beforeyoubegin': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
         'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
         'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
         'quiz': 'https://sites.google.com/view/praghna-learning-centre/quiz-yourself'
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const introButtonContainer = document.querySelector('.intro-button-container');
         introButtonContainer.style.display = 'none';
         assistantWindow.style.display = 'flex';
-        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin 4Os Test, Definitions and Terms, how to choose a subject, and some quiz to test your knowledge. Please tell me which test you would like to take.";
+        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin, Definitions and Terms, choose a subject, and some quiz to test your knowledge. Please tell me which test you would like to take.";
         addMessage(welcomeText, 'assistant-message');
         speak(welcomeText);
     });
@@ -94,5 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
