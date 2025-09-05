@@ -1,31 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const introButton = document.getElementById('introButton');
-    const assistantDiv = document.getElementById('assistant');
-    const aiMessage = document.getElementById('aiMessage');
+    const assistantWindow = document.getElementById('assistant-window');
+    const messageDisplay = document.getElementById('message-display');
     const listenButton = document.getElementById('listenButton');
+    const statusMessage = document.getElementById('status-message');
 
-    // URLs for your Google Site pages
+    // **IMPORTANT: REPLACE THESE PLACEHOLDER URLS WITH YOUR ACTUAL PUBLISHED GOOGLE SITE URLS**
     const pageUrls = {
-        '4OsTest': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
-        'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
-        'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
-        'quiz': 'https://sites.google.com/view/praghna-learning-centre/quiz-yourself'
+        'definitions': 'PASTE_YOUR_DEFINITIONS_URL_HERE',
+        'subject': 'PASTE_YOUR_SUBJECT_URL_HERE',
+        'issue': 'PASTE_YOUR_ISSUE_URL_HERE'
     };
 
-    // Check for browser support for Web Speech API
+    // Check for browser support
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const SpeechSynthesis = window.SpeechSynthesis;
 
     if (!SpeechRecognition || !SpeechSynthesis) {
-        aiMessage.textContent = "Your browser does not support the Web Speech API. Please use a modern browser like Chrome.";
+        statusMessage.textContent = "Your browser does not support the Web Speech API. Please use a modern browser like Chrome.";
         listenButton.style.display = 'none';
         return;
     }
 
     const recognition = new SpeechRecognition();
-    recognition.continuous = false; // Only get one result at a time
+    recognition.continuous = false;
     recognition.lang = 'en-US';
-
+    
     const synth = window.speechSynthesis;
 
     function speak(text) {
@@ -34,26 +34,37 @@ document.addEventListener('DOMContentLoaded', () => {
         synth.speak(utterance);
     }
 
+    function addMessage(text, sender) {
+        const message = document.createElement('p');
+        message.textContent = text;
+        message.classList.add(sender);
+        messageDisplay.appendChild(message);
+        messageDisplay.scrollTop = messageDisplay.scrollHeight;
+    }
+
     introButton.addEventListener('click', () => {
-        assistantDiv.style.display = 'block';
+        const introButtonContainer = document.querySelector('.intro-button-container');
+        introButtonContainer.style.display = 'none';
+        assistantWindow.style.display = 'flex';
         const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Definitions and Terms, how to choose a subject, and how to identify a research issue. Please tell me which test you would like to take.";
-        aiMessage.textContent = welcomeText;
+        addMessage(welcomeText, 'assistant-message');
         speak(welcomeText);
     });
 
     listenButton.addEventListener('click', () => {
-        aiMessage.textContent = "Listening...";
+        statusMessage.textContent = "Listening...";
         recognition.start();
     });
 
     recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript.toLowerCase();
-        aiMessage.textContent = `You said: "${transcript}"`;
+        addMessage(transcript, 'user-message');
+        statusMessage.textContent = "Processing...";
         handleUserCommand(transcript);
     };
 
     recognition.onerror = (event) => {
-        aiMessage.textContent = `Error: ${event.error}. Please try again.`;
+        statusMessage.textContent = `Error: ${event.error}. Please try again.`;
     };
 
     function handleUserCommand(command) {
@@ -67,19 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
             testChosen = 'issue';
         }
 
-        if (testChosen) {
-            const redirectText = `Great! Redirecting you to the test on ${testChosen}.`;
-            aiMessage.textContent = redirectText;
+        if (testChosen && pageUrls[testChosen]) {
+            const redirectText = `Great! Redirecting you to the ${testChosen} test.`;
+            addMessage(redirectText, 'assistant-message');
             speak(redirectText);
-            // Wait for the speech to finish before redirecting
+            
             setTimeout(() => {
                 window.location.href = pageUrls[testChosen];
-            }, 3000); // 3 seconds delay to let the speech play
+            }, 3000);
         } else {
             const retryText = "I'm sorry, I didn't understand that. Please say the name of the test you'd like to take.";
-            aiMessage.textContent = retryText;
+            addMessage(retryText, 'assistant-message');
             speak(retryText);
         }
     }
-
 });
