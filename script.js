@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // **IMPORTANT: REPLACE THESE PLACEHOLDER URLS WITH YOUR ACTUAL PUBLISHED GOOGLE SITE URLS**
     const pageUrls = {
-        'beforeyoubegin': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
+        'begin': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
         'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
         'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
         'issue': 'https://sites.google.com/view/praghna-learning-centre/identify-issue-and-literature-review',
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserCommand(command) {
         let testChosen = '';
 
-        if (command.includes('beforeyoubegin') || command.includes('begin')) {
-            testChosen = 'beforeyoubegin';
+        if (command.includes('begin') || command.includes('begin')) {
+            testChosen = 'begin';
         } else if (command.includes('definitions') || command.includes('terms')) {
             testChosen = 'definitions';
         } else if (command.includes('subject') || command.includes('topic')) {
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
 
 
