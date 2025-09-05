@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // URLs for your Google Site pages
     const pageUrls = {
-        'definitions': 'https://sites.google.com/view/your-site-name/definitions-and-terms',
-        'subject': 'https://sites.google.com/view/your-site-name/how-to-choose-a-subject',
-        'issue': 'https://sites.google.com/view/your-site-name/identifying-an-issue'
+        '4OsTest': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
+        'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
+        'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
+        'quiz': 'https://sites.google.com/view/praghna-learning-centre/quiz-yourself'
     };
 
     // Check for browser support for Web Speech API
@@ -80,4 +81,5 @@ document.addEventListener('DOMContentLoaded', () => {
             speak(retryText);
         }
     }
+
 });
