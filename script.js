@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // **IMPORTANT: REPLACE THESE PLACEHOLDER URLS WITH YOUR ACTUAL PUBLISHED GOOGLE SITE URLS**
     const pageUrls = {
-        'beforeyoubegin': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
+        'four o test': 'https://sites.google.com/view/praghna-learning-centre/4-os-test',
         'definitions': 'https://sites.google.com/view/praghna-learning-centre/definitions-and-terms',
         'subject': 'https://sites.google.com/view/praghna-learning-centre/subject',
         'quiz': 'https://sites.google.com/view/praghna-learning-centre/quiz-yourself'
@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
