@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const introButton = document.getElementById('introButton');
     const assistantWindow = document.getElementById('assistant-window');
     const messageDisplay = document.getElementById('message-display');
     const listenButton = document.getElementById('listenButton');
@@ -43,14 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDisplay.scrollTop = messageDisplay.scrollHeight;
     }
 
-    introButton.addEventListener('click', () => {
-        const introButtonContainer = document.querySelector('.intro-button-container');
-        introButtonContainer.style.display = 'none';
-        assistantWindow.style.display = 'flex';
-        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin, Definitions and Terms, choose a subject, and some quiz to test your knowledge. Please tell me which test you would like to take.";
+    // Function to start the assistant immediately on page load
+    function startAssistant() {
+        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin, Definitions and Terms, choose a subject, and some Quiz to test your knowledge. Please tell me which test you would like to take.";
         addMessage(welcomeText, 'assistant-message');
         speak(welcomeText);
-    });
+    }
+    
+    // Call the function on page load
+    startAssistant();
 
     listenButton.addEventListener('click', () => {
         statusMessage.textContent = "Listening...";
@@ -71,12 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserCommand(command) {
         let testChosen = '';
 
-        if (command.includes('definitions') || command.includes('terms')) {
+        if (command.includes('beforeyoubegin') || command.includes('Four O')) {
+            testChosen = 'beforeyoubegin';
+        } else if (command.includes('definitions') || command.includes('terms')) {
             testChosen = 'definitions';
         } else if (command.includes('subject') || command.includes('topic')) {
             testChosen = 'subject';
-        } else if (command.includes('4Os Test') || command.includes('newspaper')) {
-            testChosen = '4Os Test';
+        } else if (command.includes('quiz') || command.includes('quiz')) {
+            testChosen = 'quiz';
         }
 
         if (testChosen && pageUrls[testChosen]) {
@@ -94,6 +96,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-
-
