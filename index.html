@@ -5,24 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Methodology AI Assistant</title>
     <style>
-        /* Add some basic styling for the button and the assistant window */
-        body { font-family: sans-serif; text-align: center; margin: 50px; }
-        .assistant-container { border: 2px solid #ddd; padding: 20px; border-radius: 10px; display: none; margin-top: 20px; }
-        .message { margin-bottom: 10px; }
-        .assistant-message { color: #007BFF; }
-        .user-message { color: #28A745; }
-        #introButton { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        /* CSS for a more polished look */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .intro-button-container {
+            text-align: center;
+        }
+        .intro-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .intro-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .assistant-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .assistant-header {
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .message-display {
+            height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .assistant-message, .user-message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .assistant-message {
+            background-color: #e3f2fd;
+            color: #1a237e;
+            align-self: flex-start;
+        }
+        .user-message {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            align-self: flex-end;
+        }
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #listenButton {
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        #listenButton:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        #listenButton i {
+            margin-right: 8px;
+        }
+        #status-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
 
-    <button id="introButton">Start Introduction</button>
+    <div class="intro-button-container">
+        <button id="introButton" class="intro-button">Start Voice Assistant</button>
+    </div>
 
-    <div id="assistant" class="assistant-container">
-        <p class="assistant-message" id="aiMessage">Welcome! Please click the button to begin.</p>
-        <button id="listenButton">Speak</button>
+    <div id="assistant-window" class="assistant-container">
+        <header class="assistant-header">
+            <h3>AI Research Assistant</h3>
+        </header>
+        <div id="message-display" class="message-display">
+            <p class="assistant-message">Welcome! Please click the 'Speak' button to begin.</p>
+        </div>
+        <div class="input-area">
+            <button id="listenButton">
+                Speak
+            </button>
+            <p id="status-message">Ready to listen...</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
+    
 </body>
 </html>
