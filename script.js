@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const introButtonContainer = document.querySelector('.intro-button-container');
         introButtonContainer.style.display = 'none';
         assistantWindow.style.display = 'flex';
-        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin (4Os Test), Definitions and Terms, how to choose a subject, and how to identify a research issue. Please tell me which test you would like to take.";
+        const welcomeText = "Hello! Welcome to our research methodology tests. We have tests on Before You Begin 4Os Test, Definitions and Terms, how to choose a subject, and some quiz to test your knowledge. Please tell me which test you would like to take.";
         addMessage(welcomeText, 'assistant-message');
         speak(welcomeText);
     });
@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             testChosen = 'definitions';
         } else if (command.includes('subject') || command.includes('topic')) {
             testChosen = 'subject';
-        } else if (command.includes('issue') || command.includes('newspaper')) {
-            testChosen = 'issue';
+        } else if (command.includes('4Os Test') || command.includes('newspaper')) {
+            testChosen = '4Os Test';
         }
 
         if (testChosen && pageUrls[testChosen]) {
@@ -94,4 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
